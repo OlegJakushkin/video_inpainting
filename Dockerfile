@@ -43,7 +43,8 @@ RUN bash install_scripts.sh
 RUN mkdir pretrained_models && cd pretrained_models \
   && wget https://github.com/OlegJakushkin/Deep-Flow-Guided-Video-Inpainting/releases/download/test/FlowNet2_checkpoint.pth.tar \
   && wget https://github.com/OlegJakushkin/Deep-Flow-Guided-Video-Inpainting/releases/download/test/imagenet_deepfill.pth \
-  && wget https://github.com/OlegJakushkin/Deep-Flow-Guided-Video-Inpainting/releases/download/test/resnet101_movie.pth \
+  && wget https://github.com/OlegJakushkin/Deep-Flow-Guided-Video-Inpainting/releases/download/test/resnet101_movie.pth 
+  
 RUN wget https://github.com/OlegJakushkin/Deep-Flow-Guided-Video-Inpainting/releases/download/test/demo.zip && unzip demo.zip 
 
 
