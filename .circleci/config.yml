@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  test:
+    working_directory: /app
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo "Initializing build with docker stack"
+      - run: docker build .
+  
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Trigger build in docker hub.
+          command: $HUB_DOCKER_TRIGGER
+      
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
